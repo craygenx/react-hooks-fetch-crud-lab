@@ -1,10 +1,18 @@
 import React from "react";
+import Delete from "./delete";
 
-function QuestionList() {
+function QuestionList({questionItems, setQuestionItems}) {
+  const questions = questionItems.map((question)=>{
+    return <li key={question.id}>
+        <>{question.prompt}</>
+        <Delete id={question.id} questionItems={questionItems} setQuestionItems={setQuestionItems}/>
+      </li>
+  });
+
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{/* display QuestionItem components here after fetching */}</ul>
+      <ul>{questions}</ul>
     </section>
   );
 }
